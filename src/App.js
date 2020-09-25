@@ -12,8 +12,8 @@ function App() {
     fetchData();
   }, []);
 
-  const [notes, setNotes] = useState({});
-  const [folders, setFolders] = useState({})
+  const [notes, setNotes] = useState([]);
+  const [folders, setFolders] = useState([])
 
 const fetchData = async () => {
   const foldersData = await fetch('http://localhost:8000/foldersfetch');
