@@ -21,8 +21,6 @@ const fetchData = async () => {
 
   const notesData = await fetch('http://localhost:8000/notesfetch');
   const notesItems = await notesData.json();
-  console.log(folderItems);
-  console.log(notesItems);
   setNotes(notesItems);
   setFolders(folderItems);
 }
