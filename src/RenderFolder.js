@@ -13,7 +13,7 @@ function RenderFolder(props) {
     useEffect(() => {
         retrieveData()
 
-    }, [])
+    }, [folder])
 
     const retrieveData = () => {
         const findFolder = folderData.find(folder => folder.id === folderId);
@@ -23,9 +23,7 @@ function RenderFolder(props) {
 
     return(
         <div>
-            {console.log(folder)}
-            {console.log(folderData)}
-            {console.log(folderId)}
+            {console.log(folder.name)}
         </div>
     )
 }
