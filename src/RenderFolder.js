@@ -16,14 +16,16 @@ function RenderFolder(props) {
     }, [folder])
 
     const retrieveData = () => {
-        const findFolder = folderData.find(folder => folder.id === folderId);
+        const findFolder = folderData.find(f => f.id === folderId);
         console.log(findFolder);
-        setFolder(findFolder);
+        useMemo(() => {return setFolder(findFolder)})
     }
+
+    // folder ? folder.name:'No folder name'
 
     return(
         <div>
-            {console.log(folder.name)}
+            {console.log(folder)}
         </div>
     )
 }
