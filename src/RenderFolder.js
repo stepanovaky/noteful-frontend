@@ -18,7 +18,7 @@ function RenderFolder(props) {
     const retrieveData = () => {
         const findFolder = folderData.find(f => f.id === folderId);
         console.log(findFolder);
-        useMemo(() => {return setFolder(findFolder)})
+        setFolder(findFolder);
     }
 
     // folder ? folder.name:'No folder name'
