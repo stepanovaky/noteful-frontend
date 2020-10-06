@@ -21,8 +21,8 @@ import uuid from 'react-uuid';
 
 function AddNote() {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         // const newFolder ={
         //     id: uuid(),
         //     name: e.target['note-name'].value
@@ -50,7 +50,7 @@ function AddNote() {
                 Name:
                 <input type="text" name="folder-name" />
             </label>
-            <input type="submit" value="submit" onClick={() => handleSubmit} />
+            <input type="submit" value="submit" onSubmit={handleSubmit} />
         </form>
     )
 }
