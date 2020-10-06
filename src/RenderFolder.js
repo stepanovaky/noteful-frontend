@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import './All.css';
 import './RenderFolder.css';
+import DeleteNote from './DeleteNote';
 
 
 function RenderFolder(props) {
@@ -32,7 +33,7 @@ function RenderFolder(props) {
     return(
         <div className="main-folder-notes">
             <h2 className="main-folders-nav">{folder ? folder.name:'Loading ...'}</h2>
-    <ul className="main-notes-nav">{notes.map(note =><li key={note.id}><Link to={`/note/${note.id}`} >{note.name}</Link><span className="date"> Modified <Moment format="Do MMM YYYY">{note.modified}</Moment></span><button className="delete side">remove</button>  </li> )}</ul>
+    <ul className="main-notes-nav">{notes.map(note =><li key={note.id}><Link to={`/note/${note.id}`} >{note.name}</Link><span className="date"> Modified <Moment format="Do MMM YYYY">{note.modified}</Moment></span><DeleteNote noteId={note.id} /></li> )}</ul>
         
         </div>
     )

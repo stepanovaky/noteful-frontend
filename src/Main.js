@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import FolderContext from './FolderContext';
 import './All.css';
+import DeleteNote from './DeleteNote';
+import AddNote from './AddNote';
 
 function Main() {
     const notes = useContext(NoteContext);
@@ -15,7 +17,7 @@ function Main() {
    }
 
     const notesList = notes.map(note => 
-    <li key={note.id}><Link to={`/note/${note.id}`}>{note.name}</Link> <span className="date">Modified <Moment format="Do MMM YYYY">{note.modified}</Moment></span><button className="delete">remove</button> </li>);
+    <li key={note.id}><Link to={`/note/${note.id}`}>{note.name}</Link> <span className="date">Modified <Moment format="Do MMM YYYY">{note.modified}</Moment></span><DeleteNote noteId={note.id} /> </li>);
 
     const foldersList = folders.map(folder =>
         <li key={folder.id}><Link to={`/folder/${folder.id}`}>{folder.name} <span className="folder-note-count">{countNotesForFolders(notes, folder.id)}</span></Link></li>
@@ -29,6 +31,7 @@ function Main() {
         <ul className="main-notes">
             {notesList}
         </ul>
+        <AddNote />
     </div>)
 }
 
