@@ -6,6 +6,7 @@ import Main from './Main';
 import { FolderProvider } from './FolderContext';
 import { NoteProvider } from './NoteContext';
 import Nav from './Nav';
+import './All.css';
 
 function App() {
   useEffect(() => {
