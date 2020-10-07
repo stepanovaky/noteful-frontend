@@ -39,7 +39,7 @@ function RenderNote(props) {
             <h3><Link to={`/note/${note ? note.id:null}`}>{note ? note.name:'Loading ...'}</Link></h3>
             <h4>Modified <Moment format="Do MMM YYYY">{note ? note.modified:'Loading...'}</Moment> </h4>
             <p>{note ? note.content:'Loading ...'}</p>
-            <DeleteNote noteId={note ? note.id:null} />
+            <DeleteNote setNotes={props.setNotes} noteId={note ? note.id:null} />
             
         </div>
     )

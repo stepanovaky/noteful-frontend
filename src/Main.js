@@ -5,9 +5,11 @@ import Moment from 'react-moment';
 import FolderContext from './FolderContext';
 import './All.css';
 import DeleteNote from './DeleteNote';
-import AddNote from './AddNote';
+import AddFolder from './AddFolder';
+import AddNotebutton from './AddNoteButton';
 
-function Main() {
+
+function Main(props) {
     const notes = useContext(NoteContext);
     const folders = useContext(FolderContext);
 
@@ -17,7 +19,7 @@ function Main() {
    }
 
     const notesList = notes.map(note => 
-    <li key={note.id}><Link to={`/note/${note.id}`}>{note.name}</Link> <span className="date">Modified <Moment format="Do MMM YYYY">{note.modified}</Moment></span><DeleteNote noteId={note.id} /> </li>);
+    <li key={note.id}><Link to={`/note/${note.id}`}>{note.name}</Link> <span className="date">Modified <Moment format="Do MMM YYYY">{note.modified}</Moment></span><DeleteNote setNotes={props.setNotes} noteId={note.id} /> </li>);
 
     const foldersList = folders.map(folder =>
         <li key={folder.id}><Link to={`/folder/${folder.id}`}>{folder.name} <span className="folder-note-count">{countNotesForFolders(notes, folder.id)}</span></Link></li>
@@ -31,7 +33,8 @@ function Main() {
         <ul className="main-notes">
             {notesList}
         </ul>
-        <AddNote />
+        <AddFolder />
+        <AddNotebutton />
     </div>)
 }
 

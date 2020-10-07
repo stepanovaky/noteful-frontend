@@ -1,13 +1,12 @@
-import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import NoteContext from './NoteContext';
 
 
 function DeleteNote(props) {
+    const history = useHistory();
 
     const noteData = useContext(NoteContext);
-
-    const [ note, setNote ] = useState();
 
     const { noteId } = props;
 
@@ -17,8 +16,9 @@ function DeleteNote(props) {
         }
         const deleted = await fetch(`http://localhost:8000/note/${noteId}`, settings);
         const newNoteList = noteData.filter(note => note.id !== noteId)
-        setNote(newNoteList);
-        return deleted;
+        props.setNotes(newNoteList);
+       
+        
        
     }
 

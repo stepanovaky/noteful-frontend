@@ -16,41 +16,76 @@
 // for this project. Any component that receives props from its
 //  parent should be refactored to define PropType
 
-import React from 'react';
+import React, { useContext } from 'react';
 import uuid from 'react-uuid';
+import FolderContext from './FolderContext';
+import NoteContext from './NoteContext';
+import { useHistory } from 'react-router-dom';
+import './AddNote.css';
 
-function AddNote() {
 
-    const handleSubmit = (event) => {
+function AddNote(props) {
+    const history = useHistory();
+    const noteData = useContext(NoteContext);
+    const folderData = useContext(FolderContext);
+    
+
+    const folderList = folderData.map(folder => <option value={folder.id} key={folder.id} name="folder-id">{folder.name}</option>)
+
+    
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // const newFolder ={
-        //     id: uuid(),
-        //     name: e.target['note-name'].value
-            
+        console.log('this worked');
+        // const e = document.getElementbyId
 
-        // }
-        // console.log(e.target['note-name'].value)
-        // const addFolder = fetch(`http://localhost:8000/foldersfetch/`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newFolder)
-        // })
+        
+        // console.log(event.target['folder-id'].value)
+        const newNote = {
+            id: uuid(),
+            name: event.target['note-name'].value, 
+            modified: new Date(),
+            content: event.target['note-content'].value,
+            folderid: event.target['folders'].value
+        }
+        props.setNotes(noteData.concat(newNote))
+        console.log(noteData.concat(newNote));
+        
 
-        // return addFolder;
+        const addNote = await fetch(`http://localhost:8000/notesfetch/`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newNote)
+        })
 
-        console.log('link clicked')
-            
+        history.push('/')
+
+        
+
+        return addNote;
+
     }
 
     return(
-        <form className="add-note" >
+        <form className="add-note" onSubmit={handleSubmit}   >
+            
             <label>
                 Name:
-                <input type="text" name="folder-name" />
+                <input type="text" name="note-name" />
             </label>
-            <input type="submit" value="submit" onSubmit={handleSubmit} />
+            <label>
+                Folder:
+            <select name="folders" id="folders">
+                {folderList}
+            </select>
+            </label>
+            <label>
+                Content:
+                <input id="large-box" type="text" name="note-content" />
+            </label>
+            <button type="submit" value="submit">Submit</button>
         </form>
     )
 }
