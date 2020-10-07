@@ -18,10 +18,10 @@ function App() {
   const [folders, setFolders] = useState([])
 
 const fetchData = async () => {
-  const foldersData = await fetch('http://localhost:8000/foldersfetch');
+  const foldersData = await fetch('https://notefulbackend.herokuapp.com/foldersfetch');
   const folderItems = await foldersData.json();
 
-  const notesData = await fetch('http://localhost:8000/notesfetch');
+  const notesData = await fetch('https://notefulbackend.herokuapp.com/notesfetch');
   const notesItems = await notesData.json();
   setNotes(notesItems);
   setFolders(folderItems);

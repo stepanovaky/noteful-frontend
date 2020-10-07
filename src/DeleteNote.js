@@ -14,7 +14,7 @@ function DeleteNote(props) {
         const settings = {
             method: 'DELETE'
         }
-        const deleted = await fetch(`http://localhost:8000/note/${noteId}`, settings);
+        const deleted = await fetch(`https://notefulbackend.herokuapp.com/note/${noteId}`, settings);
         const newNoteList = noteData.filter(note => note.id !== noteId)
         props.setNotes(newNoteList);
        
