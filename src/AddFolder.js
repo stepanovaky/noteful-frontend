@@ -16,7 +16,6 @@ function AddFolder(props) {
             id: uuid(),
             name: event.target['folder-name'].value
         }
-
         
 
         const addFolder = await fetch(`https://notefulbackend.herokuapp.com/foldersfetch`, {
@@ -37,7 +36,7 @@ function AddFolder(props) {
         <form className="add-folder" onSubmit={handleSubmit}  >
             <label>
                 Add Folder:
-                <input type="text" name="folder-name" />
+                <input type="text" name="folder-name" required />
             </label>
             <button type="submit" value="submit" >Submit</button>
         </form>

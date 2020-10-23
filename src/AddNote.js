@@ -50,7 +50,7 @@ function AddNote(props) {
             
             <label>
                 Name:
-                <input type="text" name="note-name" />
+                <input type="text" name="note-name" required />
             </label>
             <label>
                 Folder:
@@ -60,7 +60,7 @@ function AddNote(props) {
             </label>
             <label>
                 Content:
-                <input id="large-box" type="text" name="note-content" />
+                <input id="large-box" type="text" name="note-content" required />
             </label>
             <button type="submit" value="submit">Submit</button>
         </form>

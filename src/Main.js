@@ -5,8 +5,8 @@ import Moment from 'react-moment';
 import FolderContext from './FolderContext';
 import './All.css';
 import DeleteNote from './DeleteNote';
-import AddFolder from './AddFolder';
-import AddNotebutton from './AddNoteButton';
+import AddNoteButton from './AddNoteButton';
+import AddFolderButton from './AddFolderButton';
 
 
 function Main(props) {
@@ -33,9 +33,9 @@ function Main(props) {
         <ul className="main-notes">
             {notesList}
         </ul>
-        <AddFolder />
-        <AddNotebutton />
+        <AddFolderButton />
+        <AddNoteButton />
     </div>)
 }
 
-export default Main;
+export default Main; 

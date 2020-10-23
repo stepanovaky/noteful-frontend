@@ -8,6 +8,7 @@ import { NoteProvider } from './NoteContext';
 import Nav from './Nav';
 import './All.css';
 import AddNote from './AddNote';
+import AddFolder from './AddFolder';
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ const fetchData = async () => {
           <Route path="/folder/:id" render={props => <RenderFolder {...props} setNotes={setNotes} />} />
           <Route path="/note/:id" render={props => <RenderNote {...props} setNotes={setNotes} />} />
           <Route path="/addnote" render={props=> <AddNote setNotes={setNotes} />} />
+          <Route path="/addfolder" component={AddFolder} />
         </FolderProvider>
 
       </NoteProvider>
