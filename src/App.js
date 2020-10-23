@@ -32,9 +32,9 @@ const fetchData = async () => {
       <NoteProvider value={notes}>
         <FolderProvider value={folders}>
           <Nav />
-          <Route exact path="/" render={props => <Main setNotes={setNotes} />} />
-          <Route path="/folder/:id" render={props => <RenderFolder setNotes={setNotes} />} />
-          <Route path="/note/:id" render={props => <RenderNote setNotes={setNotes} />} />
+          <Route exact path="/" render={props => <Main  setNotes={setNotes} />} />
+          <Route path="/folder/:id" render={props => <RenderFolder {...props} setNotes={setNotes} />} />
+          <Route path="/note/:id" render={props => <RenderNote {...props} setNotes={setNotes} />} />
           <Route path="/addnote" render={props=> <AddNote setNotes={setNotes} />} />
         </FolderProvider>
 

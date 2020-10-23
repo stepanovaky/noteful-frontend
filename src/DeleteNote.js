@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NoteContext from './NoteContext';
 
 
 function DeleteNote(props) {
-    const history = useHistory();
 
     const noteData = useContext(NoteContext);
 
